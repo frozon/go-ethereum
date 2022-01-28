@@ -62,6 +62,7 @@ type ChainReader interface {
 	// This method subscribes to notifications about changes of the head block of
 	// the canonical chain.
 	SubscribeNewHead(ctx context.Context, ch chan<- *types.Header) (Subscription, error)
+	SubscribePending(ctx context.Context, ch chan<- common.Hash) (Subscription, error)
 }
 
 // TransactionReader provides access to past transactions and their receipts.
