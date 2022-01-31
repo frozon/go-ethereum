@@ -384,6 +384,10 @@ func (ec *Client) SubscribePending(ctx context.Context, ch chan<- common.Hash) (
 	return ec.c.EthSubscribe(ctx, ch, "newPendingTransactions")
 }
 
+func (ec *Client) SubscribeAccepted(ctx context.Context, ch chan<- common.Hash) (ethereum.Subscription, error) {
+	return ec.c.EthSubscribe(ctx, ch, "newAcceptedTransactions")
+}
+
 func toFilterArg(q ethereum.FilterQuery) (interface{}, error) {
 	arg := map[string]interface{}{
 		"address": q.Addresses,
